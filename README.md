@@ -1,36 +1,73 @@
-This is a [Next.js](https://nextjs.org) project bootstrapped with [`create-next-app`](https://nextjs.org/docs/app/api-reference/cli/create-next-app).
+# FrameVault
+
+**FrameVault** is a full-stack SaaS application for stock photography subscriptions. It provides users with seamless access to an extensive library of images through a subscription model. Leveraging a modern tech stack including **Stripe**, **Next.js**, **Supabase**, and **DaisyUI**, FrameVault offers a comprehensive solution for managing subscriptions, tracking usage, and handling billing with ease.
+
+## Tech Stack
+
+- **Stripe**: Payment processing and subscription management.
+- **Next.js**: React framework for building the user interface.
+- **Supabase**: Backend services and database management.
+- **DaisyUI**: Styling library for responsive and customizable UI components.
+
+## Features
+
+- **Subscription Management**: Users can subscribe to monthly plans for image access.
+- **Payment Processing**: Secure transactions with Stripe.
+- **Usage Metering**: Track user activity and bill based on usage.
+- **Automated Billing**: Seamlessly handle invoicing and billing.
 
 ## Getting Started
-
-First, run the development server:
-
+To start the Next.js app, use the following command:
 ```bash
+git clone <this-repo>
+npm install
 npm run dev
-# or
-yarn dev
-# or
-pnpm dev
-# or
-bun dev
 ```
 
-Open [http://localhost:3000](http://localhost:3000) with your browser to see the result.
+Create a .env file in the root directory and configure the following environment variables:
+```bash
+NEXT_PUBLIC_STRIPE_PUBLISHABLE_KEY=
+STRIPE_SECRET_KEY=
+STRIPE_WEBHOOK_SECRET=
 
-You can start editing the page by modifying `app/page.tsx`. The page auto-updates as you edit the file.
+NEXT_PUBLIC_SUPABASE_ANON_KEY=
+NEXT_PUBLIC_SUPABASE_URL=
+SUPABASE_SECRET_KEY=
+```
 
-This project uses [`next/font`](https://nextjs.org/docs/app/building-your-application/optimizing/fonts) to automatically optimize and load [Geist](https://vercel.com/font), a new font family for Vercel.
+Install the Stripe CLI to handle webhooks and run it locally.
+```bash
+stripe listen -e customer.subscription.updated,customer.subscription.deleted,checkout.session.completed --forward-to http://localhost:3000/api/webhook
+```
 
-## Learn More
+Create the required Supabase tables using the integrated SQL editor:
+```bash
+create table
+  public.stripe_customers (
+    id uuid not null default uuid_generate_v4 (),
+    user_id uuid not null,
+    stripe_customer_id text not null,
+    total_downloads integer null default 0,
+    plan_active boolean not null default false,
+    plan_expires bigint null,
+    subscription_id text null,
+    constraint stripe_customers_pkey primary key (id),
+    constraint stripe_customers_stripe_customer_id_key unique (stripe_customer_id),
+    constraint stripe_customers_user_id_fkey foreign key (user_id) references auth.users (id)
+  ) tablespace pg_default;
 
-To learn more about Next.js, take a look at the following resources:
+create table
+  public.downloads (
+    id uuid not null default uuid_generate_v4 (),
+    user_id uuid not null,
+    ts timestamp without time zone null default now(),
+    image text null,
+    constraint downloads_pkey primary key (id),
+    constraint downloads_user_id_fkey foreign key (user_id) references auth.users (id)
+  ) tablespace pg_default;
+```
 
-- [Next.js Documentation](https://nextjs.org/docs) - learn about Next.js features and API.
-- [Learn Next.js](https://nextjs.org/learn) - an interactive Next.js tutorial.
+Enable Supabase Email auth by setting the "confirm email" option to false.
 
-You can check out [the Next.js GitHub repository](https://github.com/vercel/next.js) - your feedback and contributions are welcome!
-
-## Deploy on Vercel
-
-The easiest way to deploy your Next.js app is to use the [Vercel Platform](https://vercel.com/new?utm_medium=default-template&filter=next.js&utm_source=create-next-app&utm_campaign=create-next-app-readme) from the creators of Next.js.
-
-Check out our [Next.js deployment documentation](https://nextjs.org/docs/app/building-your-application/deploying) for more details.
+## Contact
+For more information or inquiries, please contact me at abdirahmanxabokar@gmail.com.
