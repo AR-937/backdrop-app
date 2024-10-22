@@ -3,6 +3,8 @@ import { stripe } from '@/utils/stripe';
 import { supabaseAdmin } from '@/utils/supabaseServer';
 import Stripe from 'stripe';
 
+//webhook = stripe listen -e customer.subscription.updated,customer.subscription.deleted,checkout.session.completed --forward-to http://localhost:3000/api/webhook 
+
 export async function POST(request: NextRequest) {
     try {
       const rawBody = await request.text();
