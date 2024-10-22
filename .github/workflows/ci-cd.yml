@@ -1,0 +1,54 @@
+name: CI/CD for FrameVault
+
+# Trigger workflow on push or pull request to the main branch
+on:
+  push:
+    branches:
+      - main
+  pull_request:
+    branches:
+      - main
+
+jobs:
+  build-and-deploy:
+    runs-on: ubuntu-latest
+
+    steps:
+      # Step 1: Checkout code
+      - name: Checkout code
+        uses: actions/checkout@v3
+
+      # Step 2: Set up Node.js environment
+      - name: Set up Node.js
+        uses: actions/setup-node@v3
+        with:
+          node-version: '16'  # Use the Node.js version you need
+
+      # Step 3: Install project dependencies
+      - name: Install dependencies
+        run: npm install
+
+      # Step 4: Run tests to ensure everything is working
+      - name: Run Tests
+        run: npm test
+
+      # Step 5: Deploy to Supabase (or any other task that uses sensitive data)
+      - name: Deploy to Supabase
+        env:
+          SUPABASE_URL: ${{ secrets.SUPABASE_URL }}
+          SUPABASE_KEY: ${{ secrets.SUPABASE_KEY }}
+        run: |
+          # Replace with your Supabase deployment command
+          echo "Deploying to Supabase using $SUPABASE_URL"
+          # Example Supabase command: npx supabase start
+
+      # Step 6: Notify via Stripe Webhook Simulation (Optional)
+      - name: Simulate Stripe Webhook (Optional)
+        env:
+          STRIPE_WEBHOOK_SECRET: ${{ secrets.STRIPE_WEBHOOK_SECRET }}
+        run: |
+          # Simulate a Stripe webhook event if needed
+          curl -X POST -H "Content-Type: application/json" \
+            -H "Stripe-Signature: ${STRIPE_WEBHOOK_SECRET}" \
+            -d '{"type": "customer.subscription.updated"}' \
+            http://localhost:3000/api/webhook
