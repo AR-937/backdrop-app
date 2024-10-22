@@ -48,12 +48,4 @@ jobs:
           echo "Deploying to Supabase using $SUPABASE_URL"
           # Example Supabase command: npx supabase start
 
-      # Step 7: Notify via Stripe Webhook Simulation (Optional)
-      - name: Simulate Stripe Webhook (Optional)
-        env:
-          STRIPE_WEBHOOK_SECRET: ${{ secrets.STRIPE_WEBHOOK_SECRET }}
-        run: |
-          # Simulate a Stripe webhook event if needed
-          curl -X POST -H "Content-Type: application/json" \
-            -H "Stripe-Signature: ${STRIPE_WEBHOOK_SECRET}" \
-            -d '{"type": "customer.subscription.updated"}' \
+
