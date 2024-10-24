@@ -18,7 +18,7 @@ export default function RootLayout({
 }>) {
   return (
     <html lang="en">
-      <body className={`${inter.className} bg-[#1f1f1f] text-[#c5c8c6] min-h-screen flex flex-col`}>
+      <body className={`${inter.className} bg-[#f7f9fc] text-[#333333] min-h-screen flex flex-col`}>
         <Navbar />
         <main className="flex-grow flex justify-center items-center p-6">
           <div className="prose text-center space-y-8">{children}</div>
@@ -32,24 +32,24 @@ export default function RootLayout({
 
 const Navbar = () => {
   return (
-    <nav className="navbar bg-[#2b2b2b] p-4 shadow-md">
+    <nav className="navbar bg-[#ffffff] p-4 shadow-md border-b border-[#e0e0e0]">
       <div className="container mx-auto flex justify-between items-center">
-        <Link href="/" className="text-2xl font-bold text-[#61dafb] hover:text-[#40c0eb]">
+        <Link href="/" className="text-2xl font-bold text-[#0070f3] hover:text-[#005bb5]">
           📸 FrameVault
         </Link>
         <ul className="flex space-x-6">
           <li>
-            <Link href="/" className="text-lg text-[#c5c8c6] hover:text-[#61dafb]">
+            <Link href="/" className="text-lg text-[#333333] hover:text-[#0070f3]">
               Home
             </Link>
           </li>
           <li>
-            <Link href="/photos" className="text-lg text-[#c5c8c6] hover:text-[#61dafb]">
+            <Link href="/photos" className="text-lg text-[#333333] hover:text-[#0070f3]">
               Photos
             </Link>
           </li>
           <li>
-            <Link href="/user" className="text-lg text-[#c5c8c6] hover:text-[#61dafb]">
+            <Link href="/user" className="text-lg text-[#333333] hover:text-[#0070f3]">
               Account
             </Link>
           </li>
@@ -61,17 +61,17 @@ const Navbar = () => {
 
 const Footer = () => {
   return (
-    <footer className="bg-[#2b2b2b] text-[#8a8d91] p-6">
+    <footer className="bg-[#ffffff] text-[#666666] p-6 border-t border-[#e0e0e0]">
       <div className="container mx-auto text-center">
         <p>© {new Date().getFullYear()} FrameVault. All rights reserved.</p>
         <div className="mt-4">
-          <Link href="/" className="mx-2 hover:text-[#61dafb]">
+          <Link href="/" className="mx-2 hover:text-[#0070f3]">
             Privacy Policy
           </Link>
-          <Link href="/" className="mx-2 hover:text-[#61dafb]">
+          <Link href="/" className="mx-2 hover:text-[#0070f3]">
             Terms of Service
           </Link>
-          <Link href="/" className="mx-2 hover:text-[#61dafb]">
+          <Link href="/" className="mx-2 hover:text-[#0070f3]">
             Contact
           </Link>
         </div>
