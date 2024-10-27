@@ -1,7 +1,7 @@
 import { EmbeddedCheckout } from "@stripe/react-stripe-js";
 import CheckoutButton from "./CheckoutButton";
 import EmbeddedCheckoutButton from "./EmbeddedCheckoutButton";
-
+//redesign
 export default function Home() {
   return (
     <main className="min-h-screen bg-[#f7f9fc] text-black flex flex-col items-center justify-center p-6 font-semibold">

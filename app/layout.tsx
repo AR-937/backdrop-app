@@ -3,7 +3,7 @@ import Link from "next/link";
 import { Merriweather } from "next/font/google";
 import "./globals.css";
 import { Toaster } from "react-hot-toast";
-
+//redesign
 const merriweather = Merriweather({
   subsets: ["latin"],
   weight: "300"
