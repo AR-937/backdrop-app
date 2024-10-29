@@ -40,8 +40,8 @@ export default function EmbeddedCheckoutButton() {
 
   return (
     <div id="checkout" className="my-4">
-      <button className="btn" onClick={handleCheckoutClick}>
-        Buy with Embedded Checkout
+      <button className="btn btn-secondary btn-lg rounded-lg shadow-lg" onClick={handleCheckoutClick}>
+        Subscribe with Embedded Checkout
       </button>
       <dialog ref={modalRef} className="modal">
         <div className="modal-box w-100 max-w-screen-2xl">

@@ -5,6 +5,7 @@ import { supabase } from '@/utils/supabaseClient';
 import toast from 'react-hot-toast';
 
 
+
 export default function CheckoutButton() {
   const handleCheckout = async() => {
     const { data } = await supabase.auth.getUser();
@@ -28,10 +29,9 @@ export default function CheckoutButton() {
   }
 
   return (
+          //Clicking this button creates a new Stripe Checkout session
     <div>
-      <h1>Signup for a Plan</h1>
-      <p>Clicking this button creates a new Stripe Checkout session</p>
-      <button className="btn btn-accent" onClick={handleCheckout}>Buy Now</button>
+      <button className="btn btn-primary btn-lg rounded-lg shadow-lg" onClick={handleCheckout}>Buy Now</button>
     </div>
   );
 }

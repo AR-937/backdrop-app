@@ -1,25 +1,28 @@
-import { EmbeddedCheckout } from "@stripe/react-stripe-js";
 import CheckoutButton from "./CheckoutButton";
 import EmbeddedCheckoutButton from "./EmbeddedCheckoutButton";
-//redesign
+
 export default function Home() {
   return (
-    <main className="min-h-screen bg-[#f7f9fc] text-black flex flex-col items-center justify-center p-6 font-semibold">
+    <main className="min-h-screen bg-gray-900 text-gray-100 flex flex-col items-center justify-center p-8 font-inter">
       <section className="text-center max-w-2xl space-y-6 mb-12">
-        <h1 className="text-4xl font-bold text-[#0070f3]">Welcome to FrameVault</h1>
-        <p className="text-lg">
+        <h1 className="text-6xl font-extrabold text-indigo-400">
+          Welcome to <span className="text-purple-500">FrameVault</span>
+        </h1>
+        <p className="text-2xl leading-relaxed text-gray-300">
           Discover a curated selection of high-quality wallpapers to refresh your desktop.
         </p>
-        <p className="text-lg">
+        <p className="text-2xl leading-relaxed text-gray-300">
           Choose from stunning visuals, from serene landscapes to sleek minimalist designs.
         </p>
-        <p className="text-lg">
+        <p className="text-2xl leading-relaxed text-gray-300">
           Find your perfect wallpaper and give your screen a fresh new look.
         </p>
       </section>
 
-      <CheckoutButton />
-      <EmbeddedCheckoutButton />
+      <div className="flex flex-col space-y-4">
+        <CheckoutButton />
+        <EmbeddedCheckoutButton />
+      </div>
     </main>
   );
 }
