@@ -26,4 +26,4 @@ export default function Home() {
     </main>
   );
 }
-//Vercel Template ? 1. Front Page, 2. Wallpaper API 3. Sign Up Setup 
+//Vercel Template ? 1. Front Page, 2. Wallpaper API 3. Sign Up 4. Front Page Slider
