@@ -26,4 +26,4 @@ export default function Home() {
     </main>
   );
 }
-//vercel template ? 1. front page image slider, 2. wallpaper api 3. sign up 4. embedded unsubscribe
+//1. front page image slider / wallhaven api? 2. sign up 3. embedded unsubscribe
