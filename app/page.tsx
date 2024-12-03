@@ -26,4 +26,4 @@ export default function Home() {
     </main>
   );
 }
-//1. front page clean up 2. sign up with acc 3. wallhaven api for images?
+//1. front page clean up 2. sign up with acc 3. subscription tiers 4. wallpaper api?
