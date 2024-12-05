@@ -84,4 +84,4 @@ const Footer = () => {
     </footer>
   );
 };
-//1. link to social media 2. about page 3. log in
+//1. link to social media 2. about page 3. manual log in
