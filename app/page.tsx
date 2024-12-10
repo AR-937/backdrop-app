@@ -26,4 +26,4 @@ export default function Home() {
     </main>
   );
 }
-//1. front page clean up 2. sign up manually  
+//1. front page clean up 2. sign up manually 3. subscription tiers? 
